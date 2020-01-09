@@ -1,7 +1,7 @@
 Summary: Library of functions for manipulating TIFF format image files
 Name: libtiff
 Version: 3.9.4
-Release: 10%{?dist}
+Release: 18%{?dist}
 
 License: libtiff
 Group: System Environment/Libraries
@@ -30,12 +30,27 @@ Patch19: libtiff-CVE-2012-4564.patch
 Patch20: libtiff-CVE-2012-5581.patch
 Patch21: libtiff-tiffinfo-exif.patch
 Patch22: libtiff-printdir-width.patch
-Patch27: libtiff-CVE-2013-1960.patch
-Patch28: libtiff-CVE-2013-1961.patch
-Patch29: libtiff-CVE-2013-4231.patch
-Patch30: libtiff-CVE-2013-4232.patch
-Patch31: libtiff-CVE-2013-4244.patch
-Patch32: libtiff-CVE-2013-4243.patch
+Patch23: libtiff-CVE-2013-1960.patch
+Patch24: libtiff-CVE-2013-1961.patch
+Patch25: libtiff-CVE-2013-4231.patch
+Patch26: libtiff-CVE-2013-4232.patch
+Patch27: libtiff-CVE-2013-4244.patch
+Patch28: libtiff-CVE-2013-4243.patch
+Patch29: libtiff-CVE-2014-9330.patch
+Patch30: libtiff-CVE-2014-8127.patch
+Patch31: libtiff-CVE-2014-8129.patch
+Patch32: libtiff-CVE-2014-8130.patch
+Patch33: libtiff-CVE-2014-9655.patch
+Patch34: libtiff-CVE-2015-1547_8784.patch
+Patch35: libtiff-CVE-2015-8781.patch
+Patch36: libtiff-CVE-2015-8683_8665.patch
+Patch37: libtiff-CVE-2015-7554.patch
+Patch38: libtiff-CVE-2015-8668.patch
+Patch39: libtiff-CVE-2016-3632.patch
+Patch40: libtiff-CVE-2016-3945.patch
+Patch41: libtiff-CVE-2016-3990.patch
+Patch42: libtiff-CVE-2016-3991.patch
+Patch43: libtiff-CVE-2016-5320.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: zlib-devel libjpeg-devel
@@ -101,12 +116,27 @@ necessary for some boot packages.
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
 %patch27 -p1
 %patch28 -p1
 %patch29 -p1
 %patch30 -p1
 %patch31 -p1
 %patch32 -p1
+%patch33 -p1
+%patch34 -p1
+%patch35 -p1
+%patch36 -p1
+%patch37 -p1
+%patch38 -p1
+%patch39 -p1
+%patch40 -p1
+%patch41 -p1
+%patch42 -p1
+%patch43 -p1
 
 # Use build system's libtool.m4, not the one in the package.
 rm -f libtool.m4
@@ -215,8 +245,49 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.a
 
 %changelog
-* Thu Feb 13 2014 Petr Hracek <phracek@redhat.com> - 3.9.4-10
-- Resolves: #1063464. Several CVEs for libtiff
+* Wed Jul 20 2016 Nikola Forró <nforro@redhat.com> - 3.9.4-18
+- Update patch for CVE-2014-8127
+- Related: #1335099
+
+* Wed Jul 20 2016 Nikola Forró <nforro@redhat.com> - 3.9.4-17
+- Fix patches for CVE-2016-3990 and CVE-2016-5320
+- Related: #1335099
+
+* Wed Jul 20 2016 Nikola Forró <nforro@redhat.com> - 3.9.4-16
+- Add patches for CVEs:
+- CVE-2016-3632 CVE-2016-3945 CVE-2016-3990
+- CVE-2016-3991 CVE-2016-5320
+- Related: #1335099
+
+* Wed Jul 20 2016 Nikola Forró <nforro@redhat.com> - 3.9.4-15
+- Update patch for CVE-2014-8129
+- Related: #1335099
+
+* Tue Jul 19 2016 Nikola Forró <nforro@redhat.com> - 3.9.4-14
+- Merge previously released fixes for CVEs:
+- CVE-2013-1960 CVE-2013-1961 CVE-2013-4231
+- CVE-2013-4232 CVE-2013-4243 CVE-2013-4244
+- Resolves: #1335099
+
+* Mon Apr 25 2016 Petr Hracek <phracek@redhat.com> - 3.9.4-13
+- Patch typos in CVE-2014-8127
+- Related: #1299919
+
+* Mon Apr 25 2016 Petr Hracek <phracek@redhat.com> - 3.9.4-12
+- Fix CVE-2014-8127 and CVE-2015-8668 patches
+- Related: #1299919
+
+* Wed Mar 09 2016 Petr Hracek <phracek@redhat.com> - 3.9.4-11
+- Fixed patches on preview CVEs
+- Related: #1299919
+
+* Tue Feb 16 2016 Petr Hracek <phracek@redhat.com> - 3.9.4-10
+- This resolves several CVEs
+- CVE-2014-8127, CVE-2014-8129, CVE-2014-8130
+- CVE-2014-9330, CVE-2014-9655, CVE-2015-8781
+- CVE-2015-8784, CVE-2015-1547, CVE-2015-8683
+- CVE-2015-8665, CVE-2015-7554, CVE-2015-8668
+- Resolves: #1299919
 
 * Thu Dec 13 2012 Tom Lane <tgl@redhat.com> 3.9.4-9
 - Still more fixes to make test case for CVE-2012-5581 work on all platforms
