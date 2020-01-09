@@ -1,7 +1,7 @@
 Summary: Library of functions for manipulating TIFF format image files
 Name: libtiff
 Version: 3.9.4
-Release: 9%{?dist}
+Release: 10%{?dist}
 
 License: libtiff
 Group: System Environment/Libraries
@@ -30,6 +30,12 @@ Patch19: libtiff-CVE-2012-4564.patch
 Patch20: libtiff-CVE-2012-5581.patch
 Patch21: libtiff-tiffinfo-exif.patch
 Patch22: libtiff-printdir-width.patch
+Patch27: libtiff-CVE-2013-1960.patch
+Patch28: libtiff-CVE-2013-1961.patch
+Patch29: libtiff-CVE-2013-4231.patch
+Patch30: libtiff-CVE-2013-4232.patch
+Patch31: libtiff-CVE-2013-4244.patch
+Patch32: libtiff-CVE-2013-4243.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: zlib-devel libjpeg-devel
@@ -95,6 +101,12 @@ necessary for some boot packages.
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
+%patch27 -p1
+%patch28 -p1
+%patch29 -p1
+%patch30 -p1
+%patch31 -p1
+%patch32 -p1
 
 # Use build system's libtool.m4, not the one in the package.
 rm -f libtool.m4
@@ -203,23 +215,26 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.a
 
 %changelog
+* Thu Feb 13 2014 Petr Hracek <phracek@redhat.com> - 3.9.4-10
+- Resolves: #1063464. Several CVEs for libtiff
+
 * Thu Dec 13 2012 Tom Lane <tgl@redhat.com> 3.9.4-9
 - Still more fixes to make test case for CVE-2012-5581 work on all platforms
-Resolves: #885310
+Resolves: #885311
 
 * Tue Dec 11 2012 Tom Lane <tgl@redhat.com> 3.9.4-8
 - Fix incomplete patch for CVE-2012-3401
 - Add libtiff-tiffinfo-exif.patch so that our test case for CVE-2012-5581 works
   with pre-4.0.2 libtiff
-Resolves: #885310
+Resolves: #885311
 
 * Mon Dec 10 2012 Tom Lane <tgl@redhat.com> 3.9.4-7
 - Add fixes for CVE-2012-3401, CVE-2012-4447, CVE-2012-4564, CVE-2012-5581
-Resolves: #885310
+Resolves: #885311
 
 * Wed Jun 27 2012 Tom Lane <tgl@redhat.com> 3.9.4-6
 - Add fixes for CVE-2012-2088, CVE-2012-2113
-Resolves: #835748
+Resolves: #835749
 
 * Mon Apr  2 2012 Tom Lane <tgl@redhat.com> 3.9.4-5
 - Add fix for CVE-2012-1173
@@ -468,7 +483,7 @@ Resolves: bz #222729
 * Tue Dec 19 2000 Philipp Knirsch <pknirsch@redhat.de>
 - rebuild
 
-* Tue Aug  7 2000 Crutcher Dunnavant <crutcher@redhat.com>
+* Mon Aug  7 2000 Crutcher Dunnavant <crutcher@redhat.com>
 - added a tiff-to-ps.fpi filter for printing
 
 * Thu Jul 13 2000 Prospector <bugzilla@redhat.com>
