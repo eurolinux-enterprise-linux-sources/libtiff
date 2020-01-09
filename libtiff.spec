@@ -1,7 +1,7 @@
 Summary: Library of functions for manipulating TIFF format image files
 Name: libtiff
 Version: 3.9.4
-Release: 6%{?dist}
+Release: 9%{?dist}
 
 License: libtiff
 Group: System Environment/Libraries
@@ -24,6 +24,12 @@ Patch13: libtiff-CVE-2009-5022.patch
 Patch14: libtiff-CVE-2012-1173.patch
 Patch15: libtiff-CVE-2012-2088.patch
 Patch16: libtiff-CVE-2012-2113.patch
+Patch17: libtiff-CVE-2012-3401.patch
+Patch18: libtiff-CVE-2012-4447.patch
+Patch19: libtiff-CVE-2012-4564.patch
+Patch20: libtiff-CVE-2012-5581.patch
+Patch21: libtiff-tiffinfo-exif.patch
+Patch22: libtiff-printdir-width.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: zlib-devel libjpeg-devel
@@ -83,6 +89,12 @@ necessary for some boot packages.
 %patch14 -p1
 %patch15 -p1
 %patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
 
 # Use build system's libtool.m4, not the one in the package.
 rm -f libtool.m4
@@ -191,6 +203,20 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.a
 
 %changelog
+* Thu Dec 13 2012 Tom Lane <tgl@redhat.com> 3.9.4-9
+- Still more fixes to make test case for CVE-2012-5581 work on all platforms
+Resolves: #885310
+
+* Tue Dec 11 2012 Tom Lane <tgl@redhat.com> 3.9.4-8
+- Fix incomplete patch for CVE-2012-3401
+- Add libtiff-tiffinfo-exif.patch so that our test case for CVE-2012-5581 works
+  with pre-4.0.2 libtiff
+Resolves: #885310
+
+* Mon Dec 10 2012 Tom Lane <tgl@redhat.com> 3.9.4-7
+- Add fixes for CVE-2012-3401, CVE-2012-4447, CVE-2012-4564, CVE-2012-5581
+Resolves: #885310
+
 * Wed Jun 27 2012 Tom Lane <tgl@redhat.com> 3.9.4-6
 - Add fixes for CVE-2012-2088, CVE-2012-2113
 Resolves: #835748
