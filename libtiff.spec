@@ -1,7 +1,7 @@
 Summary: Library of functions for manipulating TIFF format image files
 Name: libtiff
 Version: 4.0.3
-Release: 32%{?dist}
+Release: 9%{?dist}
 
 License: libtiff
 Group: System Environment/Libraries
@@ -18,41 +18,6 @@ Patch5: libtiff-CVE-2013-1960.patch
 Patch6: libtiff-CVE-2013-1961.patch
 Patch7: libtiff-manpage-update.patch
 Patch8: libtiff-make-check.patch
-Patch9: libtiff-CVE-2013-4231.patch
-Patch10: libtiff-CVE-2013-4232.patch
-Patch11: libtiff-CVE-2013-4244.patch
-Patch12: libtiff-CVE-2013-4243.patch
-Patch13: libtiff-CVE-2014-9330.patch
-Patch14: libtiff-CVE-2014-8127.patch
-Patch15: libtiff-CVE-2014-8129.patch
-Patch16: libtiff-CVE-2014-8130.patch
-Patch17: libtiff-CVE-2014-9655.patch
-Patch18: libtiff-CVE-2015-1547_8784.patch
-Patch19: libtiff-CVE-2015-7554.patch
-Patch20: libtiff-CVE-2015-8683_8665.patch
-Patch21: libtiff-CVE-2015-8668.patch
-Patch22: libtiff-CVE-2015-8781.patch
-Patch23: libtiff-CVE-2016-3632.patch
-Patch24: libtiff-CVE-2016-3945.patch
-Patch25: libtiff-CVE-2016-3990.patch
-Patch26: libtiff-CVE-2016-3991.patch
-Patch27: libtiff-CVE-2016-5320.patch
-Patch28: libtiff-CVE-2016-9533_9534_9536_9537.patch
-Patch29: libtiff-CVE-2016-9535.patch
-Patch30: libtiff-CVE-2016-9540.patch
-Patch31: libtiff-CVE-2016-5652.patch
-Patch32: libtiff-CVE-2015-8870.patch
-Patch33: libtiff-CVE-2016-3186.patch
-Patch34: libtiff-CVE-2018-7456.patch
-Patch35: libtiff-CVE-2018-8905.patch
-Patch36: libtiff-CVE-2018-10779.patch
-Patch37: libtiff-CVE-2018-10963.patch
-Patch38: libtiff-CVE-2018-12900.patch
-Patch39: libtiff-CVE-2018-17100.patch
-Patch40: libtiff-CVE-2018-17101.patch
-Patch41: libtiff-CVE-2018-18557.patch
-Patch42: libtiff-CVE-2018-18661.patch
-Patch43: libtiff-coverity.patch
 
 BuildRequires: zlib-devel libjpeg-devel jbigkit-devel
 BuildRequires: libtool automake autoconf pkgconfig
@@ -112,41 +77,6 @@ image files using the libtiff library.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch34 -p1
-%patch35 -p1
-%patch36 -p1
-%patch37 -p1
-%patch38 -p1
-%patch39 -p1
-%patch40 -p1
-%patch41 -p1
-%patch42 -p1
-%patch43 -p1
 
 # Use build system's libtool.m4, not the one in the package.
 rm -f libtool.m4
@@ -251,134 +181,6 @@ find html -name 'Makefile*' | xargs rm
 %{_mandir}/man1/*
 
 %changelog
-* Tue Apr 30 2019 Nikola Forró <nforro@redhat.com> - 4.0.3-32
-- Fix one more Covscan defect
-- Related: #1647965
-
-* Tue Apr 30 2019 Nikola Forró <nforro@redhat.com> - 4.0.3-31
-- Fix processing of RAS files without colormap 
-- Related: #1647965
-
-* Thu Dec 13 2018 Nikola Forró <nforro@redhat.com> - 4.0.3-30
-- Fix various Covscan defects
-- Related: #1647965
-
-* Thu Dec 13 2018 Nikola Forró <nforro@redhat.com> - 4.0.3-29
-- Fix compiler warning introduced by patch for CVE-2018-18661
-- Related: #1647965
-
-* Thu Dec 06 2018 Nikola Forró <nforro@redhat.com> - 4.0.3-28
-- Fix CVE-2016-3186
-- Resolves: #1319503
-- Fix CVE-2018-7456
-- Resolves: #1561318
-- Fix CVE-2018-8905
-- Resolves: #1574548
-- Fix CVE-2018-10779
-- Resolves: #1598503
-- Fix CVE-2018-10963
-- Resolves: #1598726
-- Fix CVE-2018-12900
-- Resolves: #1600430
-- Fix CVE-2018-17100
-- Resolves: #1632578
-- Fix CVE-2018-17101
-- Resolves: #1632579
-- Fix CVE-2018-18557
-- Resolves: #1647737
-- Fix CVE-2018-18661
-- Resolves: #1647965
-
-* Wed Jan 18 2017 Nikola Forró <nforro@redhat.com> - 4.0.3-27
-- Fix CWE-476 defect found by covscan
-- Related: #1412081
-
-* Wed Jan 11 2017 Nikola Forró <nforro@redhat.com> - 4.0.3-26
-- Add patches for CVEs:
-  CVE-2016-9533, CVE-2016-9534, CVE-2016-9535,
-  CVE-2016-9536, CVE-2016-9537, CVE-2016-9540,
-  CVE-2016-5652, CVE-2015-8870
-- Resolves: #1412081
-
-* Wed Jul 27 2016 Nikola Forró <nforro@redhat.com> - 4.0.3-25
-- Add patches for CVEs:
-  CVE-2015-7554, CVE-2015-8683, CVE-2015-8665,
-  CVE-2015-8781, CVE-2015-8782, CVE-2015-8783,
-  CVE-2015-8784
-- Related: #1299921
-
-* Tue Jul 26 2016 Nikola Forró <nforro@redhat.com> - 4.0.3-24
-- Update patches for CVEs:
-  CVE-2014-8127, CVE-2014-8130
-- Related: #1299921
-
-* Mon Jul 25 2016 Petr Hracek <phracek@redhat.com> - 4.0.3-23
-- Update patches:
-  CVE-2014-9330, CVE-2014-8127, CVE-2014-8129
-  CVE-2014-8130
-- Related: #1299921
-
-* Tue Jul 19 2016 Nikola Forró <nforro@redhat.com> - 4.0.3-22
-- Update patch for CVE-2015-8668
-- Related: #1299921
-
-* Mon Jul 11 2016 Nikola Forró <nforro@redhat.com> - 4.0.3-21
-- Remove patches for CVEs:
-  CVE-2014-8127, CVE-2014-8129, CVE-2014-8130,
-  CVE-2014-9330, CVE-2015-7554, CVE-2015-8665,
-  CVE-2015-8683, CVE-2015-8781, CVE-2015-8784
-- Add patches for CVEs:
-  CVE-2016-3632, CVE-2016-3945, CVE-2016-3990,
-  CVE-2016-3991, CVE-2016-5320
-- Update patches for CVEs:
-  CVE-2014-9655, CVE-2015-1547, CVE-2015-8668
-- Related: #1299921
-
-* Tue Apr 19 2016 Petr Hracek <phracek@redhat.com> - 4.0.3-20
-- CVE-2014-8127 should contain only two fixes
-- Related: #1299921
-
-* Fri Apr 01 2016 Petr Hracek <phracek@redhat.com> - 4.0.3-19
-- Revert previous patch CVE-2014-8127
-- Related: #1299921
-
-* Thu Mar 31 2016 Petr Hracek <phracek@redhat.com> - 4.0.3-18
-- Fixed wrongly applied patch CVE-2014-8127
-- Related: #1299921
-
-* Tue Mar 15 2016 Petr Hracek <phracek@redhat.com> - 4.0.3-17
-- Fixed patch CVE-2015-8668. Wrongly applied by me
-- Related: #1299921
-
-* Tue Mar 08 2016 Petr Hracek <phracek@redhat.com> - 4.0.3-16
-- Fixed patches on preview CVEs
-- Related: #1299921
-
-* Wed Feb 03 2016 Petr Hracek <phracek@redhat.com> - 4.0.3-15
-- This resolves several CVEs
-- CVE-2014-8127, CVE-2014-8129, CVE-2014-8130
-- CVE-2014-9330, CVE-2014-9655, CVE-2015-8781
-- CVE-2015-8784, CVE-2015-1547, CVE-2015-8683
-- CVE-2015-8665, CVE-2015-7554, CVE-2015-8668
-- Resolves: #1299921
-
-* Thu Feb 13 2014 Petr Hracek <phracek@redhat.com> - 4.0.3-14
-- Resolves: #996827 CVE-2013-4243 libtiff various flaws
-
-* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 4.0.3-13
-- Mass rebuild 2014-01-24
-
-* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 4.0.3-12
-- Mass rebuild 2013-12-27
-
-* Wed Dec 18 2013 Petr Hracek <phracek@redhat.com> - 4.0.3-11
-- Correct man page option -W
-Resolves: #510240
-
-* Thu Dec 12 2013 Petr Hracek <phracek@redhat.com> - 4.0.3-10
-- Resolves: #996827  CVE-2013-4231 CVE-2013-4232 CVE-2013-4243 CVE-2013-4244
-  libtiff various flaws
-
 * Mon Oct 21 2013 Petr Hracek <phracek@redhat.com> - 4.0.3-9
 - Resolves: #1017070 - make check moved to %check section
 
